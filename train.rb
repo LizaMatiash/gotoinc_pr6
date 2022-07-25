@@ -58,8 +58,8 @@ class Train
     end
   end
 
-  def find(num)
-    puts @@all.include?(num) ? "Train #{num} finded" : nil
+  def self.find(num)
+    puts @@all.include?(num) ? "Train #{num} founded" : nil
   end
 
   def valid?

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 # fff
-class VagonCargo
-  include Company
+class VagonCargo < Vagon
   attr_reader :type
 
   def initialize

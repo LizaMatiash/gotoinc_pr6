@@ -19,6 +19,7 @@ class Station
 
   def coming(trn)
     train[trn.number] = { type: trn.type, size: trn.size }
+    puts "Trains that stands here: #{train.keys.join(', ')}"
   end
 
   def show_all
@@ -41,8 +42,8 @@ class Station
     train.delete(number)
   end
 
-  def all_stations
-    @@all.map { |station| puts station }
+  def self.all_stations
+    @@all.each { |station| puts station }
   end
 
   def valid?
