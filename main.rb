@@ -38,6 +38,27 @@ class MainClass
     @train = nil
   end
 
+  METHOD = {
+    1 => :add_station,
+    2 => :add_train,
+    3 => :add_vagon,
+    4 => :delete_vagon,
+    5 => :train_on_station,
+    6 => :show_all
+  }.freeze
+
+  def start_main
+    loop do
+      puts MESSAGE[:interfase]
+      fin = false
+      choise = gets.chomp.to_i
+
+      choise.between?(1, METHOD.length) ? send(METHOD[choise]) : fin = true
+
+      break if fin
+    end
+  end
+
   def add_station
     begin
       puts MESSAGE[:enter_station_name]
@@ -147,22 +168,4 @@ end
 
 # ----------------------------------------------------------------------------------------
 main = MainClass.new
-
-loop do
-  puts MESSAGE[:interfase]
-  fin = false
-  choise = gets.chomp.to_i
-  case choise
-
-  when 1 then main.send :add_station
-  when 2 then main.send :add_train
-  when 3 then main.send :add_vagon
-  when 4 then main.send :delete_vagon
-  when 5 then main.send :train_on_station
-  when 6 then main.send :show_all
-  else
-    fin = true
-  end
-
-  break if fin
-end
+main.start_main
